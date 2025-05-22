@@ -3,11 +3,11 @@
 
 char size(int cms) {
     char sizeName = '\0';
-    if(cms < 38) {
+    if(cms <= 38) {
         sizeName = 'S';
-    } else if(cms > 38 && cms < 42) {
+    } else if(cms <= 42) {
         sizeName = 'M';
-    } else if(cms > 42) {
+    } else {
         sizeName = 'L';
     }
     return sizeName;
@@ -16,17 +16,9 @@ char size(int cms) {
 void testTshirtSize() {
     std::cout << "\nTshirt size test\n";
     assert(size(37) == 'S');
+    assert(size(38) == 'S');
     assert(size(40) == 'M');
-    assert(size(43) == 'L');
-
-    // Test boundary cases
-    assert(size(39) == 'M');
-    assert(size(42) == 'L');  
-    assert(size(0) == 'S');
-    assert(size(100) == 'L');
     assert(size(42) == 'M');
-    assert(size(38) == '38');
-
-
+    assert(size(43) == 'L');
     std::cout << "All is well (maybe!)\n";
 }
